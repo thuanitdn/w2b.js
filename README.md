@@ -147,6 +147,18 @@ multiple select
 <span w2b-bind="multi_selected"></span>
 ```
 
+**3. Getter and Setter Data:**
+
+  **Getter:** instance.get([ATTRIBUTE])
+  
+Get the current value of an attribute from the instance. For example: `instance.get("title")`
+
+Get all value. For example: `instance.get()`
+
+ **Setter:** instance.get([OBJECT OF ATTRIBUTE])
+ 
+ Example: `instance.set({title: "change a setter value})`
+
 ## Development mode
   * Having all the dependencies installed run `npm run dev`. This command will generate an non-minified version of your library and will run a watcher so you get the compilation on file change.
 
