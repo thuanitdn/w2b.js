@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HELLOWORK</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<form>
+  <input w2b-model="model_first_name" type="text" class="feedback-input" placeholder="First Name"/>
+  <input w2b-model="model_last_name" type="text" class="feedback-input" placeholder="Last Name"/>
+  <textarea w2b-model="model_comment" class="feedback-input" placeholder="Comment"></textarea>
+  <button type="button" class="submit-btn" onclick="setData()">Set Data</button><i class="text-white">(first name: Verminator, last name: Le, comment: Just write some comment).</i>
+</form>
+<hr>
+<div class="block-display">
+  <h3>Result:</h3>
+  <p><b class="text-name">First name:</b> <em w2b-bind="first_name"></em></p>
+  <p><b class="text-name">Last name:</b> <em w2b-bind="last_name"></em></p>
+  <p><b class="text-name">Comment:</b> <em w2b-bind="comment"></em></p>
+</div>
+<script type="text/javascript" src="../../lib/w2b.js"></script>
+<script type="text/javascript">
+  var model = new w2b({
+    first_name: 'model_first_name',
+    last_name: 'model_last_name',
+    comment: 'model_comment'
+  }, {
+    first_name: 'Thuan',
+    last_name: 'Le'
+  });
+
+  function setData() {
+    model.set({
+      first_name: 'Verminator',
+      last_name: 'Le',
+      comment: 'Just write some comment'
+    });
+  }
+</script>
+</body>
+</html>
