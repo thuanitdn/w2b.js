@@ -9,7 +9,8 @@ Very small just only 1,3 kb for gzip size.
 * Getter and Setter data.
 * Auto binding html
 
-## View demo
+## View demo 
+https://thuanitdn.github.io/w2b.js/helloworld.html
 
 ## Getting started
 
@@ -53,7 +54,7 @@ Very small just only 1,3 kb for gzip size.
 
 ## Document
 
-1. Constructor / initialize:  `new w2b([attributes], [default value])`
+**1. Constructor / initialize:**  `new w2b([attributes], [default value])`
 
 when creating an instance, you can pass in the initial attributes(required) and default value(not required). It will be created an instance.
 
@@ -90,7 +91,7 @@ var instance= new w2b({
 })
 ```
 
-2. Write html tag input: Using w2b-model=[NAME_ATTRIBUTE] and w2b-bind=[KEY BINDING]
+**2. Write html tag input:** Using w2b-model=[NAME_ATTRIBUTE] and w2b-bind=[KEY BINDING]
 
 **TEXT**
 
