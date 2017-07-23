@@ -23,9 +23,7 @@ https://thuanitdn.github.io/w2b.js/helloworld.html
 
   `<script src="bower_components/w2b.js/lib/w2b.min.js"></script>`
 
-## Getting started
-
-* Just copy and paste the code below for your first w2b application.
+3. Just copy and paste the code below for your first w2b application.
 
 ```html
 <!DOCTYPE html>
