@@ -16,12 +16,12 @@ https://thuanitdn.github.io/w2b.js/helloworld.html
 
 1. Installing
   * Via bower:
-    `bower install w2b`
+    `bower install w2b.js`
   * Via npm:
     `comming soon`
 2. To use W2b in your project, place the following code in the of your main HTML:
 
-  `<script src="bower_components/w2b/lib/w2b.min.js"></script>`
+  `<script src="bower_components/w2b.js/lib/w2b.min.js"></script>`
 
 ## Getting started
 
