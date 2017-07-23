@@ -30,7 +30,14 @@ https://thuanitdn.github.io/w2b.js/helloworld.html
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
+  <head></head>
+  <body>
+    Name:
+    <input w2b-model="model_name" placeholder="Enter your name here" />
+    <hr />
+    <h1 >Hello <em w2b-bind="name"></em></h1>
+    <h1 >こんにちわ <em w2b-bind="name"></em></h1>
+    <h1 >Xin chào <em w2b-bind="name"></em></h1>
     <script src="https://thuanitdn.github.io/w2b.js/w2b.min.js"></script>
     <script>
      var instance = new w2b({
@@ -39,14 +46,6 @@ https://thuanitdn.github.io/w2b.js/helloworld.html
                     name: 'Thuan Le (ツゥアン)'
                 });
     </script>
-  </head>
-  <body>
-    Name:
-    <input w2b-model="model_name" placeholder="Enter your name here" />
-    <hr />
-    <h1 >Hello <em w2b-bind="name"></em></h1>
-    <h1 >こんにちわ <em w2b-bind="name"></em></h1>
-    <h1 >Xin chào <em w2b-bind="name"></em></h1>
   </body>
 </html>
 

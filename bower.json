@@ -1,0 +1,28 @@
+{
+  "name": "w2b.js",
+  "description": "Simplest for data-binding with key-value",
+  "main": "lib/w2b.js",
+  "authors": [
+    "Thuan Le"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "webpack",
+    "es6",
+    "starter",
+    "library",
+    "universal",
+    "umd",
+    "commonjs",
+    "w2b.js",
+    "w2b"
+  ],
+  "homepage": "https://github.com/thuanitdn/w2b.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
