@@ -31,7 +31,7 @@ https://thuanitdn.github.io/w2b.js/helloworld.html
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="http://thuanitdn.github.com/w2b.min.js"></script>
+    <script src="https://thuanitdn.github.io/w2b.js/w2b.min.js"></script>
     <script>
      var instance = new w2b({
                     name: 'model_name',

@@ -21,7 +21,7 @@
 </div>
 <script type="text/javascript" src="../../lib/w2b.js"></script>
 <script type="text/javascript">
-  var model = new w2b({
+  var instance = new w2b({
     first_name: 'model_first_name',
     last_name: 'model_last_name',
     comment: 'model_comment'
@@ -31,7 +31,7 @@
   });
 
   function setData() {
-    model.set({
+      instance.set({
       first_name: 'Verminator',
       last_name: 'Le',
       comment: 'Just write some comment'
