@@ -90,7 +90,7 @@ var instance= new w2b({
 
 **2. Write html tag input:** Using w2b-model=[NAME_ATTRIBUTE] and w2b-bind=[KEY BINDING]
 
-**TEXT**
+**TEXT, EMAIL, NUMBER, TEL, SEARCH, TIME, RANGE**
 
 ```html
 <input type="text" w2b-model="m_title" />

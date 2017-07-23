@@ -35,7 +35,8 @@ export default class Boot {
       for (let index in store.element.set[objectKey]) {
         if (index < lng) {
           let type = store.element.set[objectKey][index].type;
-          if (type == 'text' || type == 'textarea') {
+          console.log(type);
+          if (type == 'text' || type == 'textarea' || type == "number" || type == "password" || type == "search" || type == "tel" || type == "email" || type == "time" || type == "range"  ) {
             // on input text or text area
             store.element.set[objectKey][index].oninput = function () {
               self.setDataStore(objectKey, this.value);
