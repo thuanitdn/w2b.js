@@ -11,6 +11,10 @@ const isInObject= (obj, attrs) =>{
     }
   }
   return flag;
-}
+};
 
-export {isObject, isInObject}
+const isArray= (arr) =>{
+  return Array.isArray(arr);
+};
+
+export {isObject, isInObject, isArray}

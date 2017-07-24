@@ -93,48 +93,6 @@ module.exports = exports["default"];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var innerHtml = function innerHtml(o, v) {
-  var lng = o.length;
-  for (var index in o) {
-    if (index < lng) {
-      o[index].innerHTML = v;
-    }
-  }
-};
-
-exports.innerHtml = innerHtml;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var setDataElement = function setDataElement(o, v) {
-  var lng = o.length;
-  for (var index in o) {
-    if (index < lng) {
-      o[index].value = v;
-    }
-  }
-};
-
-exports.setDataElement = setDataElement;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 var isObject = function isObject(o) {
   return o instanceof Object;
 };
@@ -150,8 +108,89 @@ var isInObject = function isInObject(obj, attrs) {
   return flag;
 };
 
+var isArray = function isArray(arr) {
+  return Array.isArray(arr);
+};
+
 exports.isObject = isObject;
 exports.isInObject = isInObject;
+exports.isArray = isArray;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var innerHtml = function innerHtml(o, v) {
+  var lng = o.length;
+  for (var index in o) {
+    if (index < lng) {
+      o[index].innerHTML = v;
+    }
+  }
+};
+
+exports.innerHtml = innerHtml;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setDataElement = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _util = __webpack_require__(1);
+
+var setDataElement = function setDataElement(o, v) {
+  var lng = o.length;
+
+  var _loop = function _loop(index) {
+    var type = o[index].type;
+    if (index < lng) {
+      //for multiple select
+      if (type == 'select-multiple') {
+        if (!(0, _util.isArray)(v)) {
+          console.log('%c Default value of select multiple must be an array! ', 'background: #d8252c; color: #fff');
+          return {
+            v: false
+          };
+        }
+        v.map(function (v2) {
+          var len = o[index].options.length;
+          var opt = void 0;
+          for (var i = 0; i < len; i++) {
+            opt = o[index].options[i];
+            if (opt.value == v2) {
+              opt.selected = true;
+            }
+          }
+        });
+      } else {
+        o[index].value = v;
+      }
+    }
+  };
+
+  for (var index in o) {
+    var _ret = _loop(index);
+
+    if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+  }
+};
+
+exports.setDataElement = setDataElement;
 
 /***/ }),
 /* 4 */
@@ -176,7 +215,7 @@ var _store = __webpack_require__(0);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _util = __webpack_require__(3);
+var _util = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -219,9 +258,9 @@ var _store = __webpack_require__(0);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _innerHtml = __webpack_require__(1);
+var _innerHtml = __webpack_require__(2);
 
-var _setDataElement = __webpack_require__(2);
+var _setDataElement = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -231,7 +270,7 @@ var Boot = function () {
   function Boot(attrs, default_value) {
     _classCallCheck(this, Boot);
 
-    this.defaultValue = default_value;
+    this.defaultValue = default_value || {};
     this.initial(attrs);
   }
 
@@ -263,14 +302,28 @@ var Boot = function () {
         for (var index in _store2.default.element.set[objectKey]) {
           if (index < lng) {
             var type = _store2.default.element.set[objectKey][index].type;
-            if (type == 'text' || type == 'textarea') {
+            if (type == 'text' || type == 'textarea' || type == "number" || type == "password" || type == "search" || type == "tel" || type == "email" || type == "range" || type == "date" || type == "time") {
               // on input text or text area
               _store2.default.element.set[objectKey][index].oninput = function () {
                 self.setDataStore(objectKey, this.value);
               };
-            } else if (type == "select-one" || type == 'select-multiple') {
+            } else if (type == "select-one") {
               _store2.default.element.set[objectKey][index].onchange = function () {
                 self.setDataStore(objectKey, this.value);
+              };
+            } else if (type == 'select-multiple') {
+              _store2.default.element.set[objectKey][index].onchange = function () {
+                var opts = [],
+                    opt = void 0;
+                var len = this.options.length;
+                for (var i = 0; i < len; i++) {
+                  opt = this.options[i];
+
+                  if (opt.selected) {
+                    opts.push(opt.value);
+                  }
+                }
+                self.setDataStore(objectKey, opts);
               };
             } else if (type == 'checkbox' || type == "radio") {
               _store2.default.element.set[objectKey][index].onchange = function (e) {
@@ -312,11 +365,11 @@ var _store = __webpack_require__(0);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _util = __webpack_require__(3);
+var _util = __webpack_require__(1);
 
-var _innerHtml = __webpack_require__(1);
+var _innerHtml = __webpack_require__(2);
 
-var _setDataElement = __webpack_require__(2);
+var _setDataElement = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

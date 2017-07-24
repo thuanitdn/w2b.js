@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <title>w2b.js | Simplest for data-binding with key-value</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Simplest for data-binding with key-value"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+</head>
+<body>
+
+<section class="main-content">
+  <h1>
+    <a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>w2b.js</h1>
+  <h4>Data-binding form html with key-value</h4>
+  <a href="https://github.com/thuanitdn/w2b.js">View on GitHub</a>
+  <a href="https://github.com/thuanitdn/w2b.js/zipball/master">Download .zip</a>
+  <a href="https://github.com/thuanitdn/w2b.js/tarball/master">Download .tar.gz</a>
+
+  <p>A modern browser (Chrome 31+, Firefox 29+, Safari 7+, Opera 12+, IE 9+)</p>
+
+  <h2>Installing</h2>
+
+  <div class="highlight highlight-text-html-basic">
+    <pre>bower install w2b.js --save</pre>
+  </div>
+
+  <p>After then , To use W2b in your project, place the following code in the of your main HTML:</p>
+
+  <div class="highlight highlight-text-html-basic"><pre><span class="pl-ent">script</span> <span class="pl-e">src</span>=<span
+    class="pl-s"><span class="pl-pds">"</span>bower_components/w2b.js/lib/w2b.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span
+    class="pl-ent">script</span>&gt;
+  </div>
+
+  <h2>Document</h2>
+
+  <p><b>1.Constructor / initialize: new w2b([attributes], [default value])</b></p>
+  <p>When creating an instance, you can pass in the initial attributes(required) and default value(not required). It
+    will be created an instance.</p>
+
+  <div class="highlight highlight-text-html-basic">
+    Example:
+    <pre>var instance= new w2b({
+  title: 'm_title',
+  description : 'm_description',
+  checked: 'm_checked',
+  radio: 'm_radio',
+  single_selected: 'm_single_selected',
+  multi_selected: 'm_multi_selected'
+})</pre>
+  </div>
+
+  <p><b>2.Write html tag input: Using w2b-model=[NAME_ATTRIBUTE] and w2b-bind=[KEY BINDING]</b></p>
+
+  <div class="highlight highlight-text-html-basic">
+    <h4>TEXT, EMAIL, NUMBER, TEL, SEARCH, TIME, RANGE</h4>
+  </div>
+  <p>Example:</p>
+  <div class="highlight highlight-text-html-basic">
+    <pre>&lt;<span class="pl-ent">input</span><span class="pl-e"></span><span class="pl-e"> type</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span><span
+      class="pl-e"> w2b-model</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>m_title<span class="pl-pds">"</span></span></span>&gt;</pre>
+  </div>
+
+
+  <p>TEXT <input type="text" w2b-model="m_title" placeholder="Enter an title"/>
+  <pre>TITLE: <i w2b-bind="title"></i></pre>
+  </p>
+  <p>EMAIL <input type="text" w2b-model="m_email" placeholder="Enter an email address"/>
+  <pre>EMAIL: <i w2b-bind="email"></i></pre>
+  </p>
+  <p>PASSWORD <input type="password" w2b-model="m_password" placeholder="******"/>
+  <pre>PASSWORD: <i w2b-bind="password"></i></pre>
+  </p>
+  <p>RANGE <input type="range" w2b-model="m_range"/>
+  <pre>RANGE VALUE= <i w2b-bind="range"></i></pre>
+  </p>
+  <p>TIME <input type="time" w2b-model="m_time"/>
+  <pre>TIME <i w2b-bind="time"></i></pre>
+  </p>
+  <p>DATE <input type="date" w2b-model="m_date"/>
+  <pre>DATE <i w2b-bind="date"></i></pre>
+  </p>
+  <!--TEXT AREA-->
+  <div class="highlight highlight-text-html-basic">
+    <h4>TEXTAREA</h4>
+  </div>
+  <p>Example:</p>
+  <div class="highlight highlight-text-html-basic">
+    <pre>&lt;<span class="pl-ent">textarea</span><span class="pl-e"></span><span
+      class="pl-e"> w2b-model</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>m_comment<span class="pl-pds">"</span></span> &gt;&lt;/<span
+      class="pl-ent">textarea</span><span class="pl-e"></span>&gt;</pre>
+  </div>
+
+
+  <p>TEXTAREA <br><textarea w2b-model="m_comment" placeholder="Write an comment"></textarea>
+  <pre>COMMENT: <i w2b-bind="comment"></i></pre>
+  </p>
+  <!--SELECT-->
+  <div class="highlight highlight-text-html-basic">
+    <h4>SINGLE SELECT</h4>
+  </div>
+  <p>Example:</p>
+  <div class="highlight highlight-text-html-basic">
+    <pre>&lt;<span class="pl-ent">select</span><span class="pl-e"></span><span
+      class="pl-e"> w2b-model</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>m_select<span class="pl-pds">"</span></span>&gt;&lt;<span
+      class="pl-ent">option</span><span class="pl-e"></span><span
+      class="pl-e"> value</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>sample_value<span class="pl-pds">"</span></span>&gt;&lt;/<span
+      class="pl-ent">option</span><span class="pl-e"></span>&gt;&lt;/<span class="pl-ent">select</span><span
+      class="pl-e"></span>&gt;</pre>
+  </div>
+
+
+  <p>SELECT <br><select w2b-model="m_single_select">
+    <option value="a">a</option>
+    <option value="b">b</option>
+    <option value="c">c</option>
+  </select>
+  <pre>SELECTED: <i w2b-bind="single_select"></i></pre>
+  </p>
+  <!--MULTIPLE SELECT-->
+  <div class="highlight highlight-text-html-basic">
+    <h4>MULTIPLE SELECT(bound an array)</h4>
+  </div>
+  <p>Example:</p>
+  <div class="highlight highlight-text-html-basic">
+    <pre>&lt;<span class="pl-ent">select</span><span class="pl-e"> multiple</span><span
+      class="pl-e"> w2b-model</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>m_multi_select<span class="pl-pds">"</span></span>&gt;&lt;<span
+      class="pl-ent">option</span><span class="pl-e"></span><span
+      class="pl-e"> value</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>sample_value<span class="pl-pds">"</span></span>&gt;&lt;/<span
+      class="pl-ent">option</span><span class="pl-e"></span>&gt;&lt;/<span class="pl-ent">select</span><span
+      class="pl-e"></span>&gt;</pre>
+  </div>
+
+
+  <p>MULTIPLE SELECT <br><select w2b-model="m_multi_select" multiple>
+    <option value="a">a</option>
+    <option value="b">b</option>
+    <option value="c">c</option>
+  </select>
+  <pre>SELECTED: <i w2b-bind="multi_select"></i></pre>
+  </p>
+  <!--checkbox and radio button-->
+  <div class="highlight highlight-text-html-basic">
+    <h4>CHECKBOX AND RADIO BUTTON(bound boolean)</h4>
+  </div>
+  <p>Example:</p>
+  <div class="highlight highlight-text-html-basic">
+    <pre>&lt;<span class="pl-ent">input</span><span class="pl-e"></span><span class="pl-e"> type</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>checkbox<span class="pl-pds">"</span><span
+      class="pl-e"> w2b-model</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>m_checkbox<span class="pl-pds">"</span></span></span>&gt;</pre>
+  </div>
+  <div class="highlight highlight-text-html-basic">
+    <pre>&lt;<span class="pl-ent">input</span><span class="pl-e"></span><span class="pl-e"> type</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>radio<span class="pl-pds">"</span><span
+      class="pl-e"> w2b-model</span>=<span
+      class="pl-s"><span class="pl-pds">"</span>m_radio<span class="pl-pds">"</span></span></span>&gt;</pre>
+
+    <p>CHECKBOX <input type="checkbox" w2b-model="m_checkbox"/>
+    <pre>CHECKED: <i w2b-bind="checkbox"></i></pre>
+    </p>
+    <p>RADIO BUTTON <input type="radio" w2b-model="m_radio"/>
+    <pre>CHOICE: <i w2b-bind="radio"></i></pre>
+    <!---->
+    <br />
+    <div class="highlight highlight-text-html-basic">
+      <h4>BINDING HTML VIEW (w2b-bind=[KEY BINDING])</h4>
+    </div>
+    <p>Example:</p>
+    <div class="highlight highlight-text-html-basic">
+<pre>&lt;<span class="pl-ent">span</span><span class="pl-e"></span><span
+  class="pl-e"> w2b-bind</span>=<span
+  class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span> &gt;&lt;/<span
+  class="pl-ent">span</span><span class="pl-e"></span>&gt;</pre>
+    </div>
+    <p><b>3. Getter and Setter data</b></p>
+    <div class="highlight highlight-text-html-basic">
+      <h4>GETTER DATA (instance.get([ATTRIBUTE]))</h4>
+    </div>
+    <p>Get the current value of an attribute from the instance. For example: instance.get("title")</p>
+    <p>Get all value. For example: instance.get()</p>
+    <p><button onclick="getTitle()">Click me to get a title</button></p>
+    <div class="highlight highlight-text-html-basic">
+      <h4>SETTER DATA (instance.get([OBJECT OF ATTRIBUTE]))</h4>
+    </div>
+    <p>Example: instance.set({title: "change a setter value})</p>
+    <p><button onclick="setTitle()">Click me to set a title</button></p>
+    <p>TEXT <input type="text" w2b-model="m_title" placeholder="Enter an title"/>
+    <pre>TITLE: <i w2b-bind="title"></i></pre>
+    <footer class="site-footer">
+    <span class="site-footer-owner"><a href="https://github.com/thuanitdn/w2b.js">w2b.js</a> is maintained by <a
+      href="https://thuanitdn.com">THUAN LE</a>.</span>
+    </footer>
+
+</section>
+
+<script src="./w2b.min.js"></script>
+<script>
+  var instance = new w2b({
+    title: 'm_title',
+    email: 'm_email',
+    password: 'm_password',
+    range: 'm_range',
+    time: 'm_time',
+    date: 'm_date',
+    comment: 'm_comment',
+    single_select: 'm_single_select',
+    multi_select: 'm_multi_select',
+    checkbox: 'm_checkbox',
+    radio: 'm_radio'
+  }, {
+    title: "title",
+    email: "vanthuan296@gmail.com",
+    range: 10,
+    single_select: "c",
+    multi_select: ["a", "b"]
+  })
+
+  function getTitle() {
+    alert(instance.get("title"));
+  }
+  function setTitle() {
+    instance.set({title: "set title"});
+  }
+</script>
+</body>
+</html>

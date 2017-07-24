@@ -5,7 +5,7 @@ import {setDataElement} from './setDataElement.js';
 export default class Boot {
 
   constructor(attrs, default_value) {
-    this.defaultValue = default_value;
+    this.defaultValue = default_value || {};
     this.initial(attrs);
   }
 
@@ -35,16 +35,30 @@ export default class Boot {
       for (let index in store.element.set[objectKey]) {
         if (index < lng) {
           let type = store.element.set[objectKey][index].type;
-          console.log(type);
-          if (type == 'text' || type == 'textarea' || type == "number" || type == "password" || type == "search" || type == "tel" || type == "email" || type == "time" || type == "range"  ) {
+          if (type == 'text' || type == 'textarea' || type == "number" || type == "password" || type == "search" || type == "tel" || type == "email" || type == "range" || type == "date" || type == "time" ) {
             // on input text or text area
             store.element.set[objectKey][index].oninput = function () {
               self.setDataStore(objectKey, this.value);
             }
           }
-          else if (type == "select-one" || type == 'select-multiple') {
+          else if (type == "select-one") {
             store.element.set[objectKey][index].onchange = function () {
               self.setDataStore(objectKey, this.value);
+            }
+          }
+          else if(type == 'select-multiple'){
+            store.element.set[objectKey][index].onchange = function () {
+              let opts = [],
+                opt;
+              let len = this.options.length;
+              for (let i = 0; i < len; i++) {
+                opt = this.options[i];
+
+                if (opt.selected) {
+                  opts.push(opt.value);
+                }
+              }
+              self.setDataStore(objectKey, opts);
             }
           }
           else if (type == 'checkbox' || type == "radio") {
