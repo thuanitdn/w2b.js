@@ -53,6 +53,23 @@
 })</pre>
   </div>
 
+  <div class="highlight highlight-text-html-basic">
+    Example with default value:
+    <pre>var instance= new w2b({
+  title: 'm_title',
+  description : 'm_description',
+  checked: 'm_checked',
+  radio: 'm_radio',
+  single_selected: 'm_single_selected',
+  multi_selected: 'm_multi_selected'
+},{ title: 'default title',
+  description : 'default description',
+  checked: true,
+  radio: true,
+  single_selected: a,
+  multi_selected: ['a', 'b']})</pre>
+  </div>
+
   <p><b>2.Write html tag input: Using w2b-model=[NAME_ATTRIBUTE] and w2b-bind=[KEY BINDING]</b></p>
 
   <div class="highlight highlight-text-html-basic">
@@ -172,7 +189,7 @@
     <p>RADIO BUTTON <input type="radio" w2b-model="m_radio"/>
     <pre>CHOICE: <i w2b-bind="radio"></i></pre>
     <!---->
-    <br />
+    <br/>
     <div class="highlight highlight-text-html-basic">
       <h4>BINDING HTML VIEW (w2b-bind=[KEY BINDING])</h4>
     </div>
@@ -189,12 +206,16 @@
     </div>
     <p>Get the current value of an attribute from the instance. For example: instance.get("title")</p>
     <p>Get all value. For example: instance.get()</p>
-    <p><button onclick="getTitle()">Click me to get a title</button></p>
+    <p>
+      <button onclick="getTitle()">Click me to get a title</button>
+    </p>
     <div class="highlight highlight-text-html-basic">
       <h4>SETTER DATA (instance.get([OBJECT OF ATTRIBUTE]))</h4>
     </div>
     <p>Example: instance.set({title: "change a setter value})</p>
-    <p><button onclick="setTitle()">Click me to set a title</button></p>
+    <p>
+      <button onclick="setTitle()">Click me to set a title</button>
+    </p>
     <p>TEXT <input type="text" w2b-model="m_title" placeholder="Enter an title"/>
     <pre>TITLE: <i w2b-bind="title"></i></pre>
     <footer class="site-footer">
